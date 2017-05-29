@@ -333,7 +333,7 @@ func main() {
 								aux = false
 							}
 						}
-						m[expresiones[1].Dato][0].nombreArbol = expresiones[1].Dato + ":="
+						m[expresiones[1].Dato][0].nombreArbol = expresiones[1].Dato + ":= } {"
 
 						fmt.Print("\n---------------------------------------------------------",
 							"\n\nSe construira el siguiente árbol:", "\n", m[expresiones[1].Dato], "\n")

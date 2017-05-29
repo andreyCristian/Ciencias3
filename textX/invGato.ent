@@ -1,0 +1,34 @@
+type string
+type integer
+
+entity Gato {
+    nombre: string
+    raza: Raza
+    cola: Cola
+    pelaje: Pelaje
+    ojos: Ojos
+}
+
+entity Raza {
+    nombre: string
+    descripcion: string
+    rareza: string
+}
+
+entity Cola{
+    nombre: string
+    descripcion: string
+    categoria: string
+}
+
+entity Pelaje{
+    nombre: string
+    descripcion: string
+    categoria: string
+}
+
+entity Ojos{
+    nombre: string
+    descripcion: string
+    categoria: string
+}

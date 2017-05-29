@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../libs/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../libs/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="../libs/bootstrap-3.3.7-dist/css/bootstrap.min.css.map">
+        <title></title>
+    </head>
+    <body ng-controller="{{entity.name|capitalize}}Ctrl">
+        <div class="container">
+            <div class="row">
+                <div class="center-block">
+                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                    <small>
+                        <a href="verGato.html">
+                            Volver
+                        </a>
+                    </small>
+                    <h1>Clasificacion <small>Diccionario de {{entity.name|lower}}s</small></h1>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                {% for property in entity.properties %}
+                                <th>
+                                    <a href="ver{{property.name|capitalize}}.html">
+                                        {{property.name|capitalize}}
+                                    </a>
+                                </th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="i in {{entity.name|lower}}">
+                            <tr>
+                                {% for property in entity.properties %}
+                                <td>
+                                    {{'{{'}}
+                                        i.{{property.name}}
+                                    {{'}}'}}
+                                </td>
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="center-block">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" role="button" data-toggle="collapse" data-target="#nuevo{{entity.name|lower}}">
+                            <b>Nuevo {{entity.name|upper}}</b>
+                        </div>
+                        <div class="panel-body collapse" id="nuevo{{entity.name|lower}}">
+                            <div class="container row">
+                                <h2>Agregar {{entity.name|lower}}</h2>
+                                <div class="form-horizontal">
+                                    {% for property in entity.properties %}
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="{{property.name}}">{{property.name|capitalize}}:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" ng-model="nuevo{{entity.name|capitalize}}.{{property.name}}" class="form-control" placeholder="Ingrese {{property.name}}">
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                          <button type="submit" class="btn btn-default" ng-click="Save()">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../libs/jquery-3.2.1.min.js"></script>
+        <script src="../libs/angular.min.js"></script>
+        <script src="../libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+        <script src="ver{{entity.name|capitalize}}Ctrl.js"></script>
+    </body>
+</html>

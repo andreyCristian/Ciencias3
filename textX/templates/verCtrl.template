@@ -1,0 +1,16 @@
+var {{entity.name|lower}}App = angular.module("app", []);
+
+{{entity.name|lower}}App.controller("{{entity.name|capitalize}}Ctrl", function($scope){
+    $scope.{{entity.name|lower}} = [
+        
+    ];
+
+    $scope.Save = function() {
+        $scope.{{entity.name|lower}}.push({
+            {% for property in entity.properties %}
+            {{property.name}}:$scope.nuevo{{entity.name|capitalize}}.{{property.name}},
+            {% endfor %}
+            });
+    }
+
+});
